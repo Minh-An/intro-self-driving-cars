@@ -60,5 +60,48 @@
     - P(C|P) - .009 / P(P) (.108) = .0833333
   - Will work with negative as well!
 
-Summary: ![Bayes' Rule Summary](bayes.png)
+Summary: ![Bayes' Rule Summary](images/bayes.png)
 
+## Probability Distributions 
+- way in which self-driving car represents its internal beliefs about the world 
+- **mathematical way to represent uncertainty across all possible outcomes**
+- can be visualized using a graph esp in 2D cases 
+- examples:
+  -  tells most/least likely locations of cars 
+  - rep. uncertainty in sensor measurements
+### Types 
+- discrete vs continous 
+- ![](images/distributions.png)
+#### Discrete Variables 
+- can only take on certain values (usually countable var)
+- ex: coin flips/dice roll
+#### Continuous Varaibles
+- ex: temp
+- can take on decimal values 
+- use some sort of instrument to measure them 
+- can't associate counts with them 
+### Discrete Probability Distribution 
+- example: how many times a coin -> heads
+- x-axis: outcomes (0-3 times heads)
+- y-axis: probabili8ty 
+- y-axis >= 0
+- sum of all y-axis = 1
+### Continous Probability Distributions 
+- Probability over a continous range is almost zero (since there are so many values)
+- Every outcome has probability 0
+- Probabilities are over a range 
+- P(a<x<=b) = |b-a|/range
+#
+- x-axis: unbroken line across range 
+- y-axis: "probability density function"
+  - doesn't rep. P directly
+  - the area underneath the curve rep. P
+#### Characteristics of a Continuous Distribution
+- y values >= 0
+- P(x) = 0
+- P(a<x<=b) = area under the curve
+- total area under curve = 1
+#### Uniform Contineous Distribution 
+- area forms a rectangle (base x height = prob)
+  
+  
