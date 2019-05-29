@@ -61,3 +61,4 @@
   - Will work with negative as well!
 
 Summary: ![Bayes' Rule Summary](bayes.png)
+
