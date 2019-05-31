@@ -104,4 +104,32 @@ Summary: ![Bayes' Rule Summary](images/bayes.png)
 #### Uniform Contineous Distribution 
 - area forms a rectangle (base x height = prob)
   
+## Gaussian Distribution 
+- bell shaped curve :D
+- continuous prob. distribution 
+- Terms
+  - **population** - entire set of data points 
+  - **sample** - part of pop.
+  - **mean** - avg 
+  - **standard deviation** - measures spread in data 
+
+### Guassian Equation 
+![](images/gaussianequation.png)
+- 3 vars: μ, σ, x
+- μ = population mean 
+- σ = std. deviation 
+
+### Mean
+- center of bell curve 
+- everything else stays the same, curve is shifted 
   
+### Standard Deviation
+- increases as uncertainty increases
+- curve gets wider and flatter
+
+### Area Under the Curve 
+- [Use a standard normal table](https://en.wikipedia.org/wiki/Standard_normal_table)
+
+### Central Limit Theorem 
+- if you take large enough samples from a pop. and calculate sample means, means will be normally distributed 
+- holds as long as sample size is large enough and variable is **independent + random**
