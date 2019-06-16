@@ -133,3 +133,44 @@ Summary: ![Bayes' Rule Summary](images/bayes.png)
 ### Central Limit Theorem 
 - if you take large enough samples from a pop. and calculate sample means, means will be normally distributed 
 - holds as long as sample size is large enough and variable is **independent + random**
+
+## Robot Localization
+- NOTE: lesson assumes you have a good map. W/o it, techniques won't work well
+  - SLAM (Simultaneous Localization +  Mapping): Doesn't req. good map
+- robot lost in space and wants to see where it is
+  - Satellite/GPS - not very accurate 
+  - How can we know where we are w/ 2-10 cm of error?
+
+### Total Probability
+- Robot starts with a uniform belief function (each location has the same probability for where robot is) - **maxium confusion**
+- Measurement of a door thats next to robot: Locations where a door is nearby has higher probability! (**Posterior**)
+  - Robot takes measurement: take PRODUCT of probability
+  - **ex.** if robot sees green, multiply P(green areas) with .6 and P(red areas) with .2, so green areas are **3X more likely**
+    - PROBABILITY DOESNT = 1 NOW NEED **NORMALIZATION**
+    - take the sum of the probabilities and divide the P(area)/sum
+- Robot moves right -> belief function *shifts* 
+  - Convolution
+- Robot takes another measurement after movement -> can find location (Localized)
+
+### Exact + Inexact Motion
+- Exact:
+  - Robot lives in cyclic grid world (end wraps to the front)
+  - Shifts EXACTLY one grid to the right, probabilities shift too
+- Inexact:
+  - Different probabilities of moving 
+  - .1 prob. of moving 1 grid to right, .8 of moving 2 to right, .1 of moving 3 grids to right
+  - Uniform distribution: after movement, distribution is the same!! 
+    - Convolution?
+
+### Limit Distribution
+- With inexact motion, if a robot continues to move forever, without taking measurements
+- Probability Distribution: **[1,0,0,0,0] -> [.2,.2,.2,.2,.2]**
+
+### Sense and Move 
+- Entropy: amount of uncertainty in a system 
+  - SENSE measurement: decrease uncertainty/entropy
+    - gains information
+  - MOVE movement: increase uncertainty/entropy
+    - loses information
+  - ![](images/entropy.png)
+  - more entropy, more noise 
