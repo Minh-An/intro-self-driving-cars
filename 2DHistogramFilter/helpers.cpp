@@ -15,6 +15,7 @@
 #include <cmath>
 #include <string>
 #include <fstream>
+#include <numeric>
 #include "helpers.h"
 // #include "debugging_helpers.cpp"
 
@@ -34,11 +35,20 @@ using namespace std;
 */
 vector< vector<float> > normalize(vector< vector <float> > grid) {
 	
-	vector< vector<float> > newGrid;
+	float sum = 0;
+	for (int i = 0; i < grid.size(); i++)
+	{
+		sum = accumulate(grid[i].begin(), grid[i].end(), sum);
+	}
+	for (int i = 0; i < grid.size(); i++)
+	{
+		for (int j = 0; j < grid[i].size(); j++)
+		{
+			grid[i][j] = grid[i][j] / sum;
+		}
+	}
 
-	// todo - your code here
-
-	return newGrid;
+	return grid;
 }
 
 /**
@@ -76,9 +86,38 @@ vector< vector<float> > normalize(vector< vector <float> > grid) {
 */
 vector < vector <float> > blur(vector < vector < float> > grid, float blurring) {
 
-	vector < vector <float> > newGrid;
-	
-	// your code here
+	float center = 1.0 - blurring;
+	float corner = blurring / 12.0;
+	float adjacent = blurring / 6.0;
+
+	vector<vector<float>> window = {
+		{corner, adjacent, corner},
+		{adjacent, center, adjacent},
+		{corner, adjacent, corner}};
+
+	int height = grid.size();
+	int width = grid[0].size();
+
+	vector<float> row(width, 0);
+	vector<vector<float>> newGrid(height, row);
+
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			float grid_val = grid[i][j];
+			for (int dx = -1; dx < 2; dx++)
+			{
+				for (int dy = -1; dy < 2; dy++)
+				{
+					float coefficient = window[dx + 1][dy + 1];
+					int new_i = (i + dy < 0) ? height + dy : (i + dy) % height;
+					int new_j = (j + dx < 0) ? width + dx : (j + dx) % width;
+					newGrid[new_i][new_j] += coefficient * grid_val;
+				}
+			}
+		}
+	}
 
 	return normalize(newGrid);
 }
