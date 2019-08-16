@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Jupyter Notebook
+**/__pycache__/
+**/.DS_Store
+**/.vscode/
+**/.ipynb_checkpoints/
